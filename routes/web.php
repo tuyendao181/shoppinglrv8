@@ -31,6 +31,9 @@ Route::get('/','App\Http\Controllers\HomeController@index')->name('home');
 
 Route::get('/home','App\Http\Controllers\HomeController@index')->name('home');
 
+Route::get('/show-product-detail/{id}','App\Http\Controllers\PageController@show_product_detail')->name('show_product_detail');
+Route::get('/check-product','App\Http\Controllers\PageController@check_product')->name('check_product');
+
 
 
 

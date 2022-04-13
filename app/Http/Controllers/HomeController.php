@@ -5,14 +5,23 @@ use  App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
 use Validator;
-
+use  App\Models\Product;
+use  App\Models\Color;
+use  App\Models\Size;
+use  App\Models\ProductAttr;
 
 class HomeController extends Controller
 {
     //
     public function index(){
-    
-        return view('page.home');  
+
+        $list=ProductAttr::join('products', 'products.id', '=', 'product_attributes.id_product')
+        ->leftJoin('color', 'color.id', '=', 'product_attributes.id_color')
+        ->leftJoin('size', 'size.id', '=', 'product_attributes.id_size')
+        ->get();
+        $data= $list -> unique('id_product');
+       
+        return view('page.home',compact('data'));  
     }
     public function postregister(Request $request){
       

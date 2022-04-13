@@ -10,6 +10,7 @@
     <meta name="author" content="philos" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
 
     <!-- Favicone Icon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
@@ -670,6 +671,8 @@
     <!-- JAVASCRIPT -->
     <!--==========================================-->
     
+
+    
     <script type="text/javascript" src="{{url('public/backend/js')}}/jquery.min.js"></script>
     <script type="text/javascript" src="{{url('public/backend/js/plugins')}}/jquery-ui.js"></script>
     <!-- jquery library js -->
@@ -696,8 +699,9 @@
     <!-- custom js -->
     <!-- end jquery -->
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous"></script>
 
 </body>
 

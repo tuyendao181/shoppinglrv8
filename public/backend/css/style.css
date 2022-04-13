@@ -5935,3 +5935,8 @@ ul#shipping_method {
         .Contact-information li i {
             margin-right: 10px;
         }
+
+
+.color-selector .entry{
+    background-color: #999999d1;
+}
