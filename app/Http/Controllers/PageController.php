@@ -17,7 +17,10 @@ class PageController extends Controller
         ->where('product_attributes.id_product', '=', $id)->get();
         $color = $list->unique('id_color');
         $size = $list->unique('id_size');
-        return view('page.product_detail',compact('list','color','size'));  
+        // $pro =Product::find($id);
+        $pro=Product::where('id','=',$id)->get();
+        // dd( $product );
+        return view('page.product_detail',compact('list','color','size','pro'));  
     }
     public function check_product(Request $request){
         $list=ProductAttr::where('id_product', '=', $request->id_product)

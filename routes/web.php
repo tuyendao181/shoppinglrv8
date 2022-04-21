@@ -112,5 +112,11 @@ Route::prefix('admin')->group(function () {
         Route::post('/add-attr','App\Http\Controllers\ProductAttrController@add_attr')->name('add_attr');
         Route::get('/delete-attr','App\Http\Controllers\ProductAttrController@delete_attr')->name('delete_attr');
     });
+
+
+    Route::prefix('cart')->group(function (){
+        Route::get('/get-cart','App\Http\Controllers\CartController@getCart')->name('getCart');
+        Route::get('/post-cart','App\Http\Controllers\CartController@postCart')->name('postCart');
+    });
    
 });

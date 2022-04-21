@@ -696,6 +696,7 @@
     <script type="text/javascript" src="{{url('public/backend/js/plugins')}}/plugins-all.js"></script>
     <!-- Plugins All js -->
     <script type="text/javascript" src="{{url('public/backend/js')}}/custom.js"></script>
+    <script type="text/javascript" src="{{url('public/backend/js')}}/custom_wap.js"></script>
     <!-- custom js -->
     <!-- end jquery -->
 

@@ -31,7 +31,7 @@
             <div class="product-image-slider-thumbnails">
                 @foreach($list as $item)
                 <div class="item">
-                    <img src="{{url('/uploads/')}}/{{ $item->image}}" alt="image 1" />
+                    <img src="{{url('/uploads/')}}/{{ $item->image}}" alt="image 1" style="height:80px;object-fit: cover;"/>
                 </div>
                 @endforeach
                
@@ -42,21 +42,28 @@
 
         <!-- Product Content -->
         <div class="col-lg-6 col-md-6 col-sm-12 mb-30">
+            
+          
             <div class="product-page-content">
-                <h2 class="product-title">LP - Black Solid Polo T-Shirt</h2>
+            @foreach($pro as $item)
+                <div id="idproduct" data-id="{{$item -> id}}"></div>
+                <h2 class="product-title">{{$item->name}}</h2>
                 <div class="product-rating">
                     <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
                         <span style="width: 60%"></span>
                     </div>
                     <a href="#" class="product-rating-count"><span class="count">3</span> Reviews</a>
                 </div>
-                <div class="product-price">
-                    <del>$499.00</del><span><span class="product-price-sign">$</span><span class="product-price-text">399.00</span></span>
+                <div class="price_wap">
+                    <div class="product-price">
+                        <del>${{$item->sale_price}}</del><span><span class="product-price-sign">$</span><span class="product-price-text">{{$item->price}}</span></span>
+                    </div>
+                    <span id="outstock">Out Stock</span>
                 </div>
                 <p class="product-description">
-                    When an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic remaining essentially unchanged.
+                    {{$item->descriptions}}
                 </p>
-                
+                @endforeach
                 <div class="row product-filters">
                     <form class="col-md-6 filters-color">
                         <label for="select-color">Select Color</label>
@@ -84,7 +91,8 @@
                         <input class="quantity input-lg" step="1" min="1" max="9" name="quantity" value="1" title="Quantity" type="number" />
                         <span data-value="-" class="quantity-btn quantityMinus"></span>
                     </div>
-                    <button type="submit" class="btn btn-lg btn-black"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Add to cart</button>
+                    <button type="submit" class="btn btn-lg btn-black buy_buy"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Add to cart</button>
+                    <button type="submit" class="btn btn-lg btn-black buy_buy" id="buy_now" data-list-detail="{{route('getCart')}}" data-url="{{route('postCart')}}"> <i class="fa fa-shopping-bag" aria-hidden="true"></i>Buy now</button>
                 </form>
                 <div class="single-add-to-wrap">
                     <a class="single-add-to-wishlist"><i class="fa fa-heart left" aria-hidden="true"></i><span>Add to Wishlist</span></a>
@@ -105,6 +113,7 @@
                     </ul>
                 </div>
             </div>
+          
         </div>
     </div>
 </div>
@@ -552,7 +561,6 @@ $( document ).ready(function() {
         $size_id=$('.size-selector .active').attr('data-id');
         $product_id=$('.color-selector .active').attr('data-product');
         $url=$('.color-selector .active').attr('data-url');
-         
         $.ajax({
                 type: "get",
                 url:  $url,
@@ -563,16 +571,20 @@ $( document ).ready(function() {
                     _token: $('meta[name="csrf-token"]').attr('content'),
                   },
                 beforeSend: function() {
-                  
+                    $('.buy_buy').removeClass('disable');
+                    $('#outstock').css('opacity','0');
                 },
                 success: function(data){
-                    console.log(data);
+                  
                     if(data.status == 200){
-                        $index=$('.thumb_'+data.val).attr('data-index');
+                        $index=$('.thumb_'+data.val).attr('data-slick-index');
                         $('#product-image-gallery').slick('slickGoTo',$index);
                     }
-                   
-                    
+                    else{
+                        $('.buy_buy').addClass('disable');
+                        $('#outstock').css('opacity','1');
+                    }
+    
                 }
         });
          

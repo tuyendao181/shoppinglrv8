@@ -1,5 +1,35 @@
 $( document ).ready(function() {
-    console.log('ok');
+  $(document).on( "click","#buy_now", function(e) {
+    e.preventDefault();
+    if($('.buy_now').hasClass('disable')){
+    }
+    else{
+      var url    = $(this).attr('data-url');
+      var urllist= $(this).attr('data-list-detail');
+      var id_pro = $('#idproduct').attr('data-id');
+      var color  = $('.color-selector .active').attr('data-id');
+      var size   = $('.size-selector .active').attr('data-id');
+      var qtn    = $('.quantity').val();
+      $.ajax({
+          type: "get",
+          url: url,
+          data:{
+              id_pro: id_pro,
+              color : color,
+              size  : size,
+              qtn   : qtn,
+              _token: $('meta[name="csrf-token"]').attr('content'),
+          },
+          beforeSend: function() {
+          },
+          success: function(data){
+            window.location.href = urllist;
+          }
+      });
+
+    }
+   
+});
 
 });
 

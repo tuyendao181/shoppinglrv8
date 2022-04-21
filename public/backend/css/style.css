@@ -5149,7 +5149,6 @@ img.tp-caption {
         border-color: #ddd;
         text-align: center;
         padding-left: 35px;
-        padding-right: 35px;
     }
 
     .product-quantity input[type="number"]::-webkit-outer-spin-button,
@@ -5939,4 +5938,21 @@ ul#shipping_method {
 
 .color-selector .entry{
     background-color: #999999d1;
+}
+.price_wap{
+    display: flex;
+    align-items: center;
+}
+span#outstock {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 5px;
+    margin-left: 12px;
+    padding: 0px 9px;
+    background: #de0303;
+    opacity: 0;
+}
+.disable{
+    opacity: 0.5;
 }
