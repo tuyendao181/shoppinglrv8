@@ -2,7 +2,7 @@
 @section('content')
 
 <section id="product-ID_XXXX" class="content-page single-product-content">
-
+<div id="toastt"></div>
 <!-- Product -->
 <div id="product-detail" class="container">
     <div class="row">
@@ -91,7 +91,7 @@
                         <input class="quantity input-lg" step="1" min="1" max="9" name="quantity" value="1" title="Quantity" type="number" />
                         <span data-value="-" class="quantity-btn quantityMinus"></span>
                     </div>
-                    <button type="submit" class="btn btn-lg btn-black buy_buy"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Add to cart</button>
+                    <button type="submit" class="btn btn-lg btn-black buy_buy" id="add_cart"  data-url="{{route('postCart')}}" url-image="{{url('/uploads/')}}"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Add to cart</button>
                     <button type="submit" class="btn btn-lg btn-black buy_buy" id="buy_now" data-list-detail="{{route('getCart')}}" data-url="{{route('postCart')}}"> <i class="fa fa-shopping-bag" aria-hidden="true"></i>Buy now</button>
                 </form>
                 <div class="single-add-to-wrap">

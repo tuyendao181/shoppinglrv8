@@ -87,6 +87,8 @@
 /*------------------------------------------------------------------*/
 /* General Style */
 /*------------------------------------------------------------------*/
+
+
 body, html {
     height: 100%;
     margin: 0;
@@ -2665,10 +2667,10 @@ img.tp-caption {
                 }
 
                     .sidebar-menu .cart-widget-content .cart-widget-product .cart-product-item li .product-image img {
-                        width: 100%;
+                        width:60px;
                         vertical-align: top;
-                        max-width: 100%;
-                        height: auto;
+                        height: 50px;
+                        object-fit: cover;
                         border: none;
                         outline: none;
                     }
@@ -5696,7 +5698,9 @@ table.shop_attributes th:last-child, table.shop_attributes td:last-child {
     }
 
 .post-8 td.product-thumbnail img {
-    max-width: 80px;
+    min-width: 80px;
+    height: 70px;
+    object-fit: cover;
 }
 
 .post-8 table tr td.product-name {

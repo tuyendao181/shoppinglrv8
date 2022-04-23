@@ -9,11 +9,12 @@ class Cart extends Model
 {
     use HasFactory;
     public $items=[];
-	public $totalItems =0;
-	public $totalPrice=0;
+	public $totalPrice;
+	public $count;
 	public function __construct(){
-		// $this->totalPrice= $this->get_total_price();
 		$this->items = session('cart') ? session('cart') : [];
+		$this-> totalPrice= $this->get_total_price();
+		$this -> count = count($this->items);
 	}
 
 	public function addItem($product,$quantity){
@@ -33,8 +34,8 @@ class Cart extends Model
 			];
 		    $this->items[$product->id_atrr] = $item;
 		}
-		$this->totalPrice= $this->items[$product->id_atrr]['price'] * $this->items[$product->id_atrr]['quantity'];
-		$this->totalItems += $this->totalPrice;
+		$this-> totalPrice= $this->get_total_price();
+		$this -> count = count($this->items);
 		session(['cart' => $this->items]);
 	}
 
@@ -42,21 +43,19 @@ class Cart extends Model
 	public function updateItem($id,$quantity){
 		if(isset($this->items[$id])){
 			$quantity = $quantity>0 ? ceil((int)$quantity) : 1;
-			$quantity = $quantity<=10 ? $quantity: 10;
-
+			$quantity = $quantity<=100 ? $quantity: 99;
 			$this->items[$id]['quantity'] = $quantity ;
-
-
+			$this-> totalPrice= $this->get_total_price();
 			session(['cart'=> $this->items]);
-
 		}
 
 	}
 	public function removeItem($id){
 		if(isset($this->items[$id])){
 			unset($this->items[$id]);
+			$this -> count = count($this->items);
+			$this-> totalPrice= $this->get_total_price();
 			session(['cart'=> $this->items]);
-
 		}
 
 
@@ -66,13 +65,13 @@ class Cart extends Model
 
 	}
 
-	// public function get_total_price(){
-	// 	$t=0;
-	// 	foreach ($this->items as $item) {
-	// 		$t +=$item['price']*$item['quantity'];
-	// 	}
-	// 	return $t;
-	// }
+	public function get_total_price(){
+		$t=0;
+		foreach ($this->items as $item) {
+			$t +=$item['price']*$item['quantity'];
+		}
+		return $t;
+	}
 
 	// public function get_total_quantity(){
 	// 	$t=0;

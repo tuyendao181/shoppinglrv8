@@ -11,12 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
-
+    <link rel="stylesheet" href="{{asset('public/adminabc/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Favicone Icon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="icon" type="img/png" href="img/favicon.png">
     <link rel="apple-touch-icon" href="img/favicon.png">
-    {{url('public/css')}}/main.css
+    <!-- Ionicons -->
+   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- CSS -->
     <link href="{{url('public/backend/css/plugins')}}/bootstrap.css" rel="stylesheet" type="text/css" />
     <!-- bootstrap css -->
@@ -28,7 +29,120 @@
     <!-- template css -->
     <link href="{{url('public/backend/plugins/rev_slider/css')}}/settings-ver.5.3.1.css" rel="stylesheet" type="text/css" />
     <!-- Slider Revolution Css Setting -->
+    <style>
+        /* toast */
+#toastt {
+    position: fixed;
+    top: 32px;
+    right: 32px;
+    z-index: 999999;
+    
+  }
+.toast--success{
+    margin-bottom: 10px;
+}
+  
+  .toastt {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 20px 0;
+    min-width: 400px;
+    max-width: 450px;
+    border-left: 4px solid;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+    transition: all linear 0.3s;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(calc(100% + 32px));
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+    }
+  }
+  
+  .toast--success {
+    border-color: #47d864;
+  }
+  
+  .toast--success .toast__icon {
+    color: #47d864;
+  }
+  
+  .toast--info {
+    border-color: #2f86eb;
+  }
+  
+  .toast--info .toast__icon {
+    color: #2f86eb;
+  }
+  
+  .toast--warning {
+    border-color: #ffc021;
+  }
+  
+  .toast--warning .toast__icon {
+    color: #ffc021;
+  }
+  
+  .toast--error {
+    border-color: #ff623d;
+  }
+  
+  .toast--error .toast__icon {
+    color: #ff623d;
+  }
+  
+  .toast + .toast {
+    margin-top: 24px;
+  }
+  
+  .toast__icon {
+    font-size: 24px;
+  }
+  
+  .toast__icon,
+  .toast__close {
+    padding: 0 16px;
+  }
+  
+  .toast__body {
+    flex-grow: 1;
+  }
+  
+  .toast__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .toast__msg {
+    font-size: 14px;
+    color: #888;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+  
+  .toast__close {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
+  
+/* endtoast   */
 
+    </style>
 </head>
 <body>
 
@@ -82,48 +196,29 @@
 
                     <!-- Cart Products -->
                     <ul class="cart-product-item">
-
+                        @foreach($cart->items as $key => $item)
                         <!-- Item -->
-                        <li>
+                        <li class="item_{{$key}}">
                             <!--Item Image-->
                             <a href="#" class="product-image">
-                                <img src="img/product-img/small/product_12547554.jpg" alt="" /></a>
+                                <img src="{{url('/uploads/')}}/{{ $item['image']}}" alt="" /></a>
 
                             <!--Item Content-->
                             <div class="product-content">
                                 <!-- Item Linkcollateral -->
-                                <a class="product-link" href="#">Alpha Block Black Polo T-Shirt</a>
+                                <a class="product-link" href="#">{{$item['name']}}</a>
 
                                 <!-- Item Cart Totle -->
                                 <div class="cart-collateral">
-                                    <span class="qty-cart">1</span>&nbsp;<span>&#215;</span>&nbsp;<span class="product-price-amount"><span class="currency-sign">$</span>399.00</span>
+                                    <span class="qty-cart qty-cart{{$key}}">{{$item['quantity']}}</span>&nbsp;<span>&#215;</span>&nbsp;<span class="product-price-amount"><span class="currency-sign">$</span>{{$item['price']}}</span>
                                 </div>
 
                                 <!-- Item Remove Icon -->
-                                <a class="product-remove" href="javascript:void(0)"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+                                <a class="product-remove" href="javascript:void(0)" url-delete="{{route('deleteCart')}}" data-id ="{{$key}}" ><i class="fa fa-times-circle" aria-hidden="true"></i></a>
                             </div>
                         </li>
+                        @endforeach
 
-                        <!-- Item -->
-                        <li>
-                            <!--Item Image-->
-                            <a href="#" class="product-image">
-                                <img src="img/product-img/small/product_12547555.jpg" alt="" /></a>
-
-                            <!--Item Content-->
-                            <div class="product-content">
-                                <!-- Item Linkcollateral -->
-                                <a class="product-link" href="#">Red Printed Round Neck T-Shirt</a>
-
-                                <!-- Item Cart Totle -->
-                                <div class="cart-collateral">
-                                    <span class="qty-cart">2</span>&nbsp;<span>&#215;</span>&nbsp;<span class="product-price-amount"><span class="currency-sign">$</span>299.00</span>
-                                </div>
-
-                                <!-- Item Remove Icon -->
-                                <a class="product-remove" href="javascript:void(0)"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
-                            </div>
-                        </li>
 
                     </ul>
                     <!-- End Cart Products -->
@@ -137,12 +232,12 @@
                 <div class="cart-footer-inner">
 
                     <!-- Cart Total -->
-                    <h4 class="cart-total-hedding normal"><span>Total :</span><span class="cart-total-price">$698.00</span></h4>
+                    <h4 class="cart-total-hedding normal"><span>Total :</span><span class="cart-total-price">${{$cart->totalPrice}}</span></h4>
                     <!-- Cart Total -->
 
                     <!-- Cart Buttons -->
                     <div class="cart-action-buttons">
-                        <a href="cart.html" class="view-cart btn btn-md btn-gray">View Cart</a>
+                        <a href="{{route('getCart')}}" class="view-cart btn btn-md btn-gray">View Cart</a>
                         <a href="checkout.html" class="checkout btn btn-md btn-color">Checkout</a>
                     </div>
                     <!-- End Cart Buttons -->
@@ -279,9 +374,9 @@
                                     </div>
 
                                     <div class="cart-title">
-                                        <span class="cart-count">2</span>
+                                        <span class="cart-count">{{$cart->count}}</span>
                                         /
-                                    <span class="cart-price strong">$698.00</span>
+                                    <span class="cart-price strong">${{$cart->totalPrice}}</span>
                                     </div>
                                 </a></li>
                             </ul>

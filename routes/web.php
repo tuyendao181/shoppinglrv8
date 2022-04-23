@@ -117,6 +117,13 @@ Route::prefix('admin')->group(function () {
     Route::prefix('cart')->group(function (){
         Route::get('/get-cart','App\Http\Controllers\CartController@getCart')->name('getCart');
         Route::get('/post-cart','App\Http\Controllers\CartController@postCart')->name('postCart');
+        Route::get('/put-cart','App\Http\Controllers\CartController@putCart')->name('putCart');
+        Route::get('/delete-Cart','App\Http\Controllers\CartController@deleteCart')->name('deleteCart');
+    });
+
+    Route::middleware('auth')->prefix('checkout')->group(function(){
+        Route::get('/get-checkout','App\Http\Controllers\CheckoutController@getCheckout')->name('getCheckout');
+        Route::get('/post-checkout','App\Http\Controllers\CheckoutController@postCheckout')->name('postCheckout');
     });
    
 });

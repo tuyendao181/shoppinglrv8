@@ -58,15 +58,12 @@ class HomeController extends Controller
     public function postlogin(){
         $data=['email'=> request('email'),'password'=> request('password')];
 		$remember= request('remember') ? true : false;
-       
 		$check=Auth::attempt($data);
-       
 		if($check){
 			return redirect()->route('home');
 		}
         else{
             return redirect()->back()->with('error','Error!! Account login password failed.');
-
         }
 	
 
