@@ -906,48 +906,24 @@
                 </div>
                 <div class="container container-margin-minus-t">
                     <div class="row">
+                        @foreach($list_category as $list)
                         <div class="col-md-4">
                             <div class="categories-box">
                                 <div class="categories-image-wrap">
-                                    <img src="img/categories/Categories_cupple.jpg" alt="" />
+                                    <img src="{{url('/uploads/')}}/{{ $list->image}}" alt="" />
                                 </div>
                                 <div class="categories-content">
-                                    <a href="#">
+                                    <a href="{{route('category_detail',[$list->id])}}">
                                         <div class="categories-caption">
-                                            <h6 class="normal">Cupple's</h6>
+                                            <h6 class="normal">{{$list->name}}</h6>
                                         </div>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="categories-box">
-                                <div class="categories-image-wrap">
-                                    <img src="img/categories/Categories_women.jpg" alt="" />
-                                </div>
-                                <div class="categories-content">
-                                    <a href="#">
-                                        <div class="categories-caption">
-                                            <h6 class="normal">Women</h6>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="categories-box">
-                                <div class="categories-image-wrap">
-                                    <img src="img/categories/Categories_man.jpg" alt="" />
-                                </div>
-                                <div class="categories-content">
-                                    <a href="#">
-                                        <div class="categories-caption">
-                                            <h6 class="normal">Man</h6>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
+                       
+                      
                     </div>
                 </div>
             </section>

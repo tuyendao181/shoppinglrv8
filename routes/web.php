@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PayPalController;
 use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +14,10 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('page.home');
+Route::get('/', function () {
+    return view('page.category');
 
-// });
+});
 
 // Route::get('/index', [Home_Controller::class, 'index']);
 
@@ -27,16 +27,22 @@ Route::get('/register','App\Http\Controllers\HomeController@register')->name('re
 Route::post('/register','App\Http\Controllers\HomeController@postregister')->name('register');
 
 
-Route::get('/','App\Http\Controllers\HomeController@index')->name('home');
+// Route::get('/','App\Http\Controllers\HomeController@index')->name('home');
 
 Route::get('/home','App\Http\Controllers\HomeController@index')->name('home');
 
 Route::get('/show-product-detail/{id}','App\Http\Controllers\PageController@show_product_detail')->name('show_product_detail');
 Route::get('/check-product','App\Http\Controllers\PageController@check_product')->name('check_product');
+Route::get('/category-detail/{id}','App\Http\Controllers\PageController@category_detail')->name('category_detail');
+Route::get('/category-filter','App\Http\Controllers\PageController@category_filter')->name('category_filter');
 
 
 
-
+//paypal
+Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
+Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
+Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
+Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
 
 
 //  Route::prefix('admin')->group(function () {
@@ -124,6 +130,8 @@ Route::prefix('admin')->group(function () {
     Route::middleware('auth')->prefix('checkout')->group(function(){
         Route::get('/get-checkout','App\Http\Controllers\CheckoutController@getCheckout')->name('getCheckout');
         Route::get('/post-checkout','App\Http\Controllers\CheckoutController@postCheckout')->name('postCheckout');
+        Route::get('/getOrderdetail','App\Http\Controllers\CheckoutController@getOrderdetail')->name('getOrderdetail');
+
     });
    
 });

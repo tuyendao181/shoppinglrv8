@@ -147,6 +147,8 @@ $(document).on( "click","#checkout", function(e) {
   var address= $('#address').val();
   var email= $('#email').val();
   var url= $(this).attr('data-url');
+  var urlorder = $(this).attr('data-order');
+  console.log(urlorder);
   $.ajax({
       type: "get",
       url: url,
@@ -160,13 +162,51 @@ $(document).on( "click","#checkout", function(e) {
       beforeSend: function() {
       },
       success: function(data){
-       console.log(data);
+      
        if(data.status == 999){
         $.each(data.err, function( key, value ) {
             $('span.'+key+'_error').text(value).css({"display":"block","margin-bottom":"10px","font-size":"15px","text-align":"left"});
         });
       }
+      else{
+        console.log(data);
+        window.location.href = urlorder;
+      }
    
+      }
+  });
+
+});
+
+
+$(document).on( "click","#paypal", function(e) {
+  e.preventDefault();
+  var name= $('#name').val();
+  var phone= $('#phone').val();
+  var address= $('#address').val();
+  var email= $('#email').val();
+  var url= $(this).attr('data-url');
+  $.ajax({
+      type: "get",
+      url: url,
+      data:{
+          name:name,
+          phone:phone,
+          address:address,
+          email:email,
+          _token: $('meta[name="csrf-token"]').attr('content'),
+      },
+      beforeSend: function() {
+      },
+      success: function(data){
+        if(data.status == 999){
+          $.each(data.err, function( key, value ) {
+              $('span.'+key+'_error').text(value).css({"display":"block","margin-bottom":"10px","font-size":"15px","text-align":"left"});
+          });
+        }else{
+          window.location.href = data;
+        }
+         
       }
   });
 

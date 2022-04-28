@@ -17,10 +17,22 @@
             <!-- Bread Crumb -->
 
             <!-- Page Content -->
+
+            
             <section class="content-page">
                 <div class="container mb-80">
                     <div class="row">
                         <div class="col-sm-12">
+
+
+                        @if(Session::has('error'))
+                            <div class="alert alert-success">
+                                <ul>
+                                    <li>{{Session::get('error')}}</li>
+                                </ul>
+                            </div>
+                        @endif
+
                             <article class="post-8">
                                
                                 <form class="product-checkout mt-45">
@@ -60,9 +72,6 @@
                                                     <span class="text-danger error-text email_error"></span>
                                                 </div>
 
-                                               
-                                               
-                                                
                                             </div>
 
                                         </div>
@@ -122,31 +131,17 @@
                                                     <div class="product-checkout-payment">
                                                         <ul>
                                                             <li>
-                                                                <input id="payment_method_bacs" name="payment_method" value="bacs" checked="checked" type="radio" />
-                                                                <label for="payment_method_bacs">Direct Bank Transfer</label>
-                                                                <div class="payment_box payment_method_bacs">
-                                                                    <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won't be shipped until the funds have cleared in our account.</p>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <input id="payment_method_cheque" name="payment_method" value="cheque" type="radio" />
-                                                                <label for="payment_method_cheque">Check payments</label>
-                                                            </li>
-                                                            <li>
-                                                                <input id="payment_method_cod" name="payment_method" value="cod" type="radio" />
-                                                                <label for="payment_method_cod">Cash on Delivery</label>
-                                                            </li>
-                                                            <li>
                                                                 <input id="payment_method_paypal" name="payment_method" value="paypal" type="radio" />
                                                                 <label for="payment_method_paypal">
-                                                                    PayPal<img class="paypal-img" src="../../../www.paypalobjects.com/webstatic/mktg/Logo/AM_mc_vs_ms_ae_UK.png" />
-                                                                    <a href="https://www.paypal.com/gb/webapps/mpp/paypal-popup" onclick="javascript:window.open('https://www.paypal.com/gb/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;">What is PayPal?</a>
+                                                                   
+                                                                    <a class="" id="paypal" data-url="{{route('processTransaction')}}" href="{{route('processTransaction')}}"><img class="paypal-img" src="https://quyetdao.com/wp-content/uploads/2019/04/paypal-logo.png" /></a>
                                                                 </label>
                                                             </li>
                                                         </ul>
                                                         <div class="place-order">
-                                                            <a class="btn btn-lg btn-color form-full-width" id="checkout" data-url="{{route('postCheckout')}}" href="">Place Order</a>
+                                                            <a class="btn btn-lg btn-color form-full-width" id="checkout" data-url="{{route('postCheckout')}}" data-order="{{route('getOrderdetail')}}" href="">Place Order</a>
                                                         </div>
+                                                        
                                                     </div>
 
                                                 </div>

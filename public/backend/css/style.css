@@ -5878,7 +5878,7 @@ ul#shipping_method {
             }
 
             .product-checkout-payment ul li img.paypal-img {
-                width: 150px;
+                width: 60px;
                 margin-left: 10px;
                 margin-right: 10px;
             }
@@ -5959,4 +5959,15 @@ span#outstock {
 }
 .disable{
     opacity: 0.5;
+}
+
+.filter-color-switcher span{
+    background-color: #ddd;
+}
+
+li.filter_color.active a,li.filter_size.active a {
+    color: #34b79d;
+}
+.filter_price.active a{
+    color: #34b79d;
 }

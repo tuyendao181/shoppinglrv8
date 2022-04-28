@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Validator;
 use  App\Models\Product;
+use  App\Models\Category;
 use  App\Models\Color;
 use  App\Models\Size;
 use  App\Models\ProductAttr;
@@ -20,17 +21,16 @@ class HomeController extends Controller
         ->leftJoin('size', 'size.id', '=', 'product_attributes.id_size')
         ->get();
         $data= $list -> unique('id_product');
-       
-        return view('page.home',compact('data'));  
+
+        $list_category = Category::where('status',0)->limit(3)->get();
+        return view('page.home',compact('data','list_category'));  
     }
     public function postregister(Request $request){
-      
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'phone' => 'required',
             'password' => 'required',
-            'email' => 'required|email|unique:account|'
-           
+            'email' => 'required|email|unique:account|' 
        ]);
        if ($validator->fails()) {
             // validate fails

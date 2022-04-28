@@ -28,6 +28,7 @@
     <link href="{{url('public/backend/css')}}/style.css" rel="stylesheet" type="text/css" />
     <!-- template css -->
     <link href="{{url('public/backend/plugins/rev_slider/css')}}/settings-ver.5.3.1.css" rel="stylesheet" type="text/css" />
+    @yield('asset_header');
     <!-- Slider Revolution Css Setting -->
     <style>
         /* toast */
@@ -792,6 +793,7 @@
     <!-- Plugins All js -->
     <script type="text/javascript" src="{{url('public/backend/js')}}/custom.js"></script>
     <script type="text/javascript" src="{{url('public/backend/js')}}/custom_wap.js"></script>
+    @yield('asset_footer');
     <!-- custom js -->
     <!-- end jquery -->
 
