@@ -35,7 +35,9 @@ Route::get('/show-product-detail/{id}','App\Http\Controllers\PageController@show
 Route::get('/check-product','App\Http\Controllers\PageController@check_product')->name('check_product');
 Route::get('/category-detail/{id}','App\Http\Controllers\PageController@category_detail')->name('category_detail');
 Route::get('/category-filter','App\Http\Controllers\PageController@category_filter')->name('category_filter');
+Route::get('/category-paginate','App\Http\Controllers\PageController@category_paginate')->name('category_paginate');
 
+Route::get('/blog-detail/{id}','App\Http\Controllers\PageController@blog_detail')->name('blog_detail');
 
 
 //paypal
@@ -70,6 +72,30 @@ Route::prefix('admin')->group(function () {
    
     });
 
+
+    Route::prefix('slider')->group(function (){
+        Route::get('/list-slider','App\Http\Controllers\SliderController@list_slider')->name('list_slider');
+        Route::get('/delete-slider','App\Http\Controllers\SliderController@delete_slider')-> name('delete_slider');
+        Route::post('/add-slider','App\Http\Controllers\SliderController@add_slider')-> name('add_slider');
+        Route::get('/edit-slider','App\Http\Controllers\SliderController@edit_slider')-> name('edit_slider');
+        Route::post('/update-slider','App\Http\Controllers\SliderController@update_slider')-> name('update_slider');
+    });
+
+    Route::prefix('blog')->group(function (){
+        Route::get('/list-blog','App\Http\Controllers\BlogController@list_blog')->name('list_blog');
+        Route::get('/delete-blog','App\Http\Controllers\BlogController@delete_blog')-> name('delete_blog');
+        Route::post('/add-blog','App\Http\Controllers\BlogController@add_blog')-> name('add_blog');
+        Route::get('/edit-blog','App\Http\Controllers\BlogController@edit_blog')-> name('edit_blog');
+        Route::post('/update-blog','App\Http\Controllers\BlogController@update_blog')-> name('update_blog');
+    });
+
+    Route::prefix('banner')->group(function (){
+        Route::get('/list-banner','App\Http\Controllers\BannerController@list_banner')->name('list_banner');
+        Route::get('/delete-banner','App\Http\Controllers\BannerController@delete_banner')-> name('delete_banner');
+        Route::post('/add-banner','App\Http\Controllers\BannerController@add_banner')-> name('add_banner');
+        // Route::get('/edit-banner','App\Http\Controllers\BannerController@edit_banner')-> name('edit_banner');
+        // Route::post('/update-banner','App\Http\Controllers\BannerController@update_banner')-> name('update_banner');
+    });
 
     Route::prefix('category')->group(function (){
         Route::get('/list-category','App\Http\Controllers\CategoryController@list_category')->name('list_category');

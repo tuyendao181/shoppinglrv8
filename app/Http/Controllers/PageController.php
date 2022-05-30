@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 use Validator;
 use  App\Models\Product;
+use  App\Helper\Pagination;
 use  App\Models\Category;
 use  App\Models\Color;
 use  App\Models\Size;
+use  App\Models\Blog;
+use App\Helper;
 use  App\Models\ProductAttr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -40,16 +43,44 @@ class PageController extends Controller
      
     }
 
-    public function category_detail(Request $request,$id){
-        $list=Category::join('products', 'products.category_id', '=', 'category.id')
-        ->join('product_attributes', 'product_attributes.id_product', '=', 'products.id')
+    public function category_detail(Request $request,$id,Pagination $p){
+        $list=Product::
+        leftJoin('category', 'category.id', '=', 'products.category_id')
+        -> leftJoin('product_attributes', 'products.id', '=', 'product_attributes.id_product')
         ->leftJoin('color', 'color.id', '=', 'product_attributes.id_color')
         ->leftJoin('size', 'size.id', '=', 'product_attributes.id_size')
-        ->where('category.id', '=', $id)->get();
+        ->where('category.id', '=', $id)
+        ->get();
+       
+        //     $test=ProductAttr::
+        //     leftJoin('products', 'products.id', '=', 'product_attributes.id_product')
+        //    ->leftJoin('category', 'category.id', '=', 'products.category_id')
+        //    ->where('category.id', '=', $id)
+        //    ->get();
+
         $pro = $list->unique('id_product');
+        $arr = [];
+        $count = count($pro);
+        $i=0;
+        $pagi= $p->pagi(5,1,$count);
+        foreach ($pro as $key => $value){
+            $arr[$i] = $value;
+            $i++;
+         }
+        $arr_temp=[];
+        $total = $p->total_page;
+        $start = $pagi['start'];
+        $end = $pagi['limit'];
+         for($start;$start < $end;$start++){
+            if(isset($arr[$start])){
+                $arr_temp[$start]=$arr[$start];
+             }
+         }
+       
         $color = $list->unique('id_color');
         $size = $list->unique('id_size');
-        return view('page.category',compact('pro','color','size','id'));
+     
+        return view('page.category',compact('arr_temp','color','size','id','total'));
     }
     public function category_filter(Request $request){
         $size= $request->size ?? '' ;
@@ -100,5 +131,44 @@ class PageController extends Controller
         $pro = $list->unique('id_product');
         return view('page.category_ajax',compact('pro'));
        
+    }
+    public function category_paginate(Request $request ,Pagination $p){
+        $curent = $request ->index;
+        $id =  $request ->id;
+        $list=Product::
+        leftJoin('category', 'category.id', '=', 'products.category_id')
+        -> leftJoin('product_attributes', 'products.id', '=', 'product_attributes.id_product')
+        ->leftJoin('color', 'color.id', '=', 'product_attributes.id_color')
+        ->leftJoin('size', 'size.id', '=', 'product_attributes.id_size')
+        ->where('category.id', '=', $id)
+        ->get();
+        $pro = $list->unique('id_product');
+        $arr = [];
+        $count = count($pro);
+        $i=0;
+        $pagi= $p->pagi(5,$curent,$count);
+        foreach ($pro as $key => $value){
+            $arr[$i] = $value;
+            $i++;
+        }
+        $arr_temp=[];
+        $total = $p->total_page;
+        $start = $pagi['start'];
+        $end = $pagi['limit'];
+         for($start;$start < $end;$start++){
+             if(isset($arr[$start])){
+                $arr_temp[$start]=$arr[$start];
+             }
+         }
+        $color = $list->unique('id_color');
+        $size = $list->unique('id_size');
+     
+        return view('page.category_paginate',compact('arr_temp','color','size','id','total'));
+    }
+
+    public function blog_detail(Request $request,$id){
+        $data =  Blog::Find_Blog($id);
+        $result =  Blog::limit(6)->get();
+        return view('page.blog_detail',compact('data','result'));
     }
 }

@@ -4,10 +4,8 @@
 <!-- Mirrored from theme.nileforest.com/html/philos/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 04 Oct 2021 13:47:25 GMT -->
 <head>
     <meta charset="utf-8">
-    <title>Philos - Responsive Ecommerce Html Template</title>
+    <title>Shoppinglrv</title>
     <meta name="description" content="Philos Template" />
-    <meta name="keywords" content="philos, WooCommerce, bootstrap, html template, philos template">
-    <meta name="author" content="philos" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
@@ -147,31 +145,6 @@
 </head>
 <body>
 
-    <!-- Newsletter Popup ---------------------------------------------------->
-    <section id="nlpopup" data-expires="30" data-delay="10">
-        <!--Close Button-->
-        <a href="javascript:void(0)" class="nlpopup_close nlpopup_close_icon">
-            <img src="img/close-icon-white.png" alt="Newsletter Close" /></a>
-        <!--End Close Button-->
-
-        <h3 class="mb-40">Join Our Mailing List </h3>
-        <p class="black mb-20">
-            But I must explain to you how all this mistaken<br />
-            idea of denouncing pleasure pain.
-        </p>
-        <form>
-            <input class="input-md" name="footeremail" title="Enter Email Address.." placeholder="example@domain.com" type="email">
-            <button class="btn btn-md btn-color">Subscribe</button>
-        </form>
-        <label class="mt-20">
-            Sign up For Exclusive Updates, New Arrivals<br />
-            And Insider-Only Discount.</label>
-        <a class="nlpopup_close nlpopup_close_link mt-40">&#10006; Close</a>
-    </section>
-    <!-- Overlay -->
-    <div id="nlpopup_overlay"></div>
-    <!-- End Newsletter Popup ------------------------------------------------>
-
     <!-- Sidebar Menu (Cart Menu) ------------------------------------------------>
     <section id="sidebar-right" class="sidebar-menu sidebar-right">
         <div class="cart-sidebar-wrap">
@@ -261,12 +234,12 @@
             <!-- Search Form -->
             <form role="search" id="searchform" action="http://theme.nileforest.com/search" method="get">
                 <div class="search-icon-lg">
-                    <img src="img/search-icon-lg.png" alt="" />
+                    <img src="{{url('public/backend/img/search-icon-lg.png')}}" alt="" />
                 </div>
                 <label class="h6 normal search-input-label" for="search-query">Enter keywords to Search Product</label>
                 <input value="" name="q" type="search" placeholder="Search..." />
                 <button type="submit">
-                    <img src="img/search-lg-go-icon.png" alt="" />
+                    <img src="{{url('public/backend')}}/img/search-lg-go-icon.png" alt="" />
                 </button>
             </form>
             <!-- End Search Form -->
@@ -286,7 +259,7 @@
                 <div class="header-topbar-inner">
                     <!--Topbar Left-->
                     <div class="topbar-left hidden-sm-down">
-                        <div class="phone"><i class="fa fa-phone left" aria-hidden="true"></i>Customer Support : <b>+77 7565 348 576</b></div>
+                        <div class="phone"><i class="fa fa-phone left" aria-hidden="true"></i>Customer Support : <b>+84 345851156</b></div>
                     </div>
                     <!--End Topbar Left-->
 
@@ -346,8 +319,8 @@
                 <div class="header-main-inner">
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="index.html">
-                            <img src="img/logo_black.png" alt="Philos" />
+                        <a href="{{route('home')}}">
+                            <img src="{{url('/public/backend/img/logo')}}/dnt.png" alt="Tuyendn" />
                         </a>
                     </div>
                     <!-- End Logo -->

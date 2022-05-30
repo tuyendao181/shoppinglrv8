@@ -57,11 +57,10 @@
                                     <form class="product-show">
                                         <label for="product-show">Show</label>
                                         <select name="product-show" id="product-show" class="nice-select-box">
-                                            <option value="15" selected="selected">15</option>
-                                            <option value="18">18</option>
-                                            <option value="21">21</option>
+                                            <option value="8" selected="selected">8</option>
+                                            <option value="16">16</option>
                                             <option value="24">24</option>
-                                            <option value="all">Show All</option>
+                                            <option value="32">32</option>
                                         </select>
                                     </form>
 
@@ -170,7 +169,7 @@
                             <!-- Product Grid -->
                             <div class="row product-list-item" category-id="{{$id}}" data-url="{{route('category_filter')}}">
                               
-                            @foreach($pro as $item)
+                                 @foreach($arr_temp as $item)
                                 <!-- item.2 -->
                                 <div class="product-item-element col-sm-6 col-md-4 col-lg-3"  >
                                     <!--Product Item-->
@@ -187,7 +186,8 @@
                                         </div>
                                         <div class="product-detail">
                                             <a class="tag" href="#">{{$item->name}}</a>
-                                            <p class="product-title"><a href="{{route('show_product_detail',[$item->id_product])}}">{{$item->name}}</a></p>
+                                      
+                                            <p class="product-title"><a href="">{{$item->name}}</a></p>
                                             <div class="product-rating">
                                                 <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
                                                     <span style="width: 60%"></span>
@@ -202,36 +202,27 @@
                                     </div>
                                     <!-- End Product Item-->
                                 </div>
-                            @endforeach
+                                @endforeach
 
                             </div>
                             <!-- End Product Grid -->
 
                             <div class="pagination-wraper">
-                                <p>Showing 1 - 15 of 120 results</p>
+                                <p>Showing results</p>
                                 <div class="pagination">
-                                    <ul class="pagination-numbers">
-                                        <!--<li>
+                                    <ul class="pagination-numbers" data-url="{{route('category_paginate')}}">
+                                        <!-- <li>
                                             <a href="#" class="prev page-number"><i class="fa fa-angle-double-left"></i></a>
-                                        </li>-->
+                                        </li> -->
+                                        @for($i = 1;$i <= $total;$i++)
                                         <li>
-                                            <a href="#" class="page-number current">1</a>
+                                            <a href="#" class="page-number current" data-index="{{$i}}">{{$i}}</a>
                                         </li>
-                                        <li>
-                                            <a href="#" class="page-number">2</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="page-number">3</a>
-                                        </li>
-                                        <li>
-                                            <span class="page-number dots">...</span>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="page-number">29</a>
-                                        </li>
-                                        <li>
+                                        @endfor
+                                       
+                                        <!-- <li>
                                             <a href="#" class="next page-number"><i class="fa fa-angle-double-right"></i></a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                             </div>

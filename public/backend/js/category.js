@@ -71,6 +71,24 @@ $( document ).ready(function() {
       ajaxFilter();
    });
 
+   $(document).on( "click",".page-number", function(e) {
+    e.preventDefault();
+    var data={};
+    data.index=$(this).attr('data-index');
+    data.id= $('.product-list-item').attr('category-id');
+    var url = $('.pagination-numbers').attr('data-url');
+    $.ajax({
+      type:"get",
+      url:url,
+      data:data,
+      success: function(res){
+        console.log(res);
+        $('.product-list-item').html(res);
+      }
+    })
+ });
+
+
     function ajaxFilter(){
       let filter = $('.filter_pro.option.selected').attr('data-value');
       let from = $('.filter_price.active a .from_cc').text();

@@ -8,7 +8,10 @@ use Validator;
 use  App\Models\Product;
 use  App\Models\Category;
 use  App\Models\Color;
+use  App\Models\Slider;
 use  App\Models\Size;
+use  App\Models\Banner;
+use  App\Models\Blog;
 use  App\Models\ProductAttr;
 
 class HomeController extends Controller
@@ -23,7 +26,11 @@ class HomeController extends Controller
         $data= $list -> unique('id_product');
 
         $list_category = Category::where('status',0)->limit(3)->get();
-        return view('page.home',compact('data','list_category'));  
+        $slider = Slider::list_Slider();
+        $banner = Banner::limit(4)->get();
+
+        $blog = Blog::get();
+        return view('page.home',compact('data','list_category','slider','banner','blog'));  
     }
     public function postregister(Request $request){
         $validator = Validator::make($request->all(), [
