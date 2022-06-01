@@ -109,7 +109,7 @@
           </thead>
           <tbody class="table__tbody " id="tb_list">
             @foreach($list as $item)
-            <tr class="table-row table-row--chris tr_{{$item->id}}">
+            <tr class="table-row table-row--chris tr_{{$item->id}} fl_{{$item->id}}">
              
             <td class="table-row__td">
                 @if($item->image != null)
@@ -379,7 +379,7 @@
                           type: "success",
                           duration: 5000
                         });
-                       $('.tr_'+id).remove();
+                        $('.fl_'+id).remove();
                     }
                 });
         

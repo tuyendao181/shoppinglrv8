@@ -26,12 +26,16 @@ Route::post('/login','App\Http\Controllers\HomeController@postlogin')->name('log
 Route::get('/register','App\Http\Controllers\HomeController@register')->name('register');
 Route::post('/register','App\Http\Controllers\HomeController@postregister')->name('register');
 
+Route::get('/logout','App\Http\Controllers\HomeController@logout')->name('logout');
+
 
 // Route::get('/','App\Http\Controllers\HomeController@index')->name('home');
 
 Route::get('/home','App\Http\Controllers\HomeController@index')->name('home');
 
 Route::get('/show-product-detail/{id}','App\Http\Controllers\PageController@show_product_detail')->name('show_product_detail');
+Route::get('/comment-product','App\Http\Controllers\PageController@comment_product')->name('comment_product');
+
 Route::get('/check-product','App\Http\Controllers\PageController@check_product')->name('check_product');
 Route::get('/category-detail/{id}','App\Http\Controllers\PageController@category_detail')->name('category_detail');
 Route::get('/category-filter','App\Http\Controllers\PageController@category_filter')->name('category_filter');

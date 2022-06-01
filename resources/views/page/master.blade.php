@@ -266,47 +266,30 @@
                     <!--Topbar Right-->
                     <div class="topbar-right">
                         <ul class="list-none">
-                            <li>
+                            <!-- <li>
                                 <a href="login-register.html"><i class="fa fa-lock left" aria-hidden="true"></i><span class="hidden-sm-down">Login</span></a>
-                            </li>
+                            </li> -->
                             <li class="dropdown-nav">
-                                <a href="login-register.html"><i class="fa fa-user left" aria-hidden="true"></i><span class="hidden-sm-down">My Account</span><i class="fa fa-angle-down right" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-user left" aria-hidden="true"></i><span class="hidden-sm-down">My Account</span><i class="fa fa-angle-down right" aria-hidden="true"></i></a>
                                 <!--Dropdown-->
                                 <div class="dropdown-menu">
                                     <ul>
-                                        <li><a href="login-register.html">My Account</a></li>
+                                        <!-- <li><a href="login-register.html">My Account</a></li> -->
                                         <li><a href="#">Order History</a></li>
-                                        <li><a href="#">Returns</a></li>
-                                        <li><a href="#">My Wishlist</a></li>
+                                        <!-- <li><a href="#">Returns</a></li>
+                                        <li><a href="#">My Wishlist</a></li> -->
                                         <li><a href="checkout.html">Checkout</a></li>
                                     </ul>
                                     <span class="divider"></span>
                                     <ul>
-                                        <li><a href="login-register.html"><i class="fa fa-lock left" aria-hidden="true"></i>Login</a></li>
-                                        <li><a href="login-register.html"><i class="fa fa-user left" aria-hidden="true"></i>Create an Account</a></li>
+                                        <li><a href="{{route('login')}}"><i class="fa fa-lock left" aria-hidden="true"></i>Login</a></li>
+                                        <li><a href="{{route('logout')}}"><i class="fa fa-lock left" aria-hidden="true"></i>Logout</a></li>
+                                        <li><a href="{{route('register')}}"><i class="fa fa-user left" aria-hidden="true"></i>Create an Account</a></li>
                                     </ul>
                                 </div>
                                 <!--End Dropdown-->
                             </li>
-                            <li class="dropdown-nav">
-                                <a href="#">USD<i class="fa fa-angle-down right" aria-hidden="true"></i></a>
-                                <!--Dropdown-->
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        <li><a href="#">USD</a></li>
-                                        <li><a href="#">EUR</a></li>
-                                        <li><a href="#">GBP</a></li>
-                                        <li><a href="#">AUD</a></li>
-                                    </ul>
-                                </div>
-                                <!--End Dropdown-->
-                            </li>
-                            <li>
-                                <a href="about.html">About</a>
-                            </li>
-                            <li>
-                                <a href="contact.html">Contact</a>
-                            </li>
+                           
                         </ul>
                     </div>
                     <!-- End Topbar Right -->
@@ -367,157 +350,7 @@
                                 <a href="index.html">Home</a>
                             </li>
                             <li>
-                                <a href="shop_grid.html">Man</a>
-                                <!-- Drodown Menu ------->
-                                <ul class="nav-dropdown js-nav-dropdown">
-                                    <li class="container">
-                                        <ul class="row">
-                                            <!--Grid 1-->
-                                            <li class="nav-dropdown-grid">
-                                                <h6>New In</h6>
-                                                <ul>
-                                                    <li><a href="#">New In Clothing</a></li>
-                                                    <li><a href="#">New In Shoes<span class="new-label">New</span></a></li>
-                                                    <li><a href="#">New In Bags</a></li>
-                                                    <li><a href="#">New In Watches</a></li>
-                                                    <li><a href="#">New In Accesories</a></li>
-                                                </ul>
-                                            </li>
-                                            <!--Grid 2-->
-                                            <li class="nav-dropdown-grid">
-                                                <h6>Clothing</h6>
-                                                <ul>
-                                                    <li><a href="#">Polos & Tees</a></li>
-                                                    <li><a href="#">Casual Shirts</a></li>
-                                                    <li><a href="#">Jeans</a></li>
-                                                    <li><a href="#">Casual Trousers</a></li>
-                                                    <li><a href="#">Formal Shirts<span class="sale-label">Sale</span></a></li>
-                                                    <li><a href="#">Formal Trousers</a></li>
-                                                    <li><a href="#">Suits & Blazers</a></li>
-                                                    <li><a href="#">Winter Jackets</a></li>
-                                                    <li><a href="#">Track wear</a></li>
-                                                </ul>
-                                            </li>
-                                            <!--Grid 3-->
-                                            <li class="nav-dropdown-grid">
-                                                <h6>ACCESSORIES</h6>
-                                                <ul>
-                                                    <li><a href="#">Mens Jewellery</a></li>
-                                                    <li><a href="#">Bag</a></li>
-                                                    <li><a href="#">Sunglasses</a></li>
-                                                    <li><a href="#">Watches</a></li>
-                                                    <li><a href="#">Hair Care</a></li>
-                                                    <li><a href="#">Ties & Cufflinks</a></li>
-                                                    <li><a href="#">Perfume</a></li>
-                                                    <li><a href="#">Belt</a></li>
-                                                </ul>
-                                            </li>
-                                            <!--Grid 4-->
-                                            <li class="nav-dropdown-grid">
-                                                <h6>Brand</h6>
-                                                <ul>
-                                                    <li><a href="#">Analog</a></li>
-                                                    <li><a href="#">Chronograph</a></li>
-                                                    <li><a href="#">Digital</a></li>
-                                                    <li><a href="#">Watch Cases</a></li>
-                                                    <li><a href="#">Samsung</a></li>
-                                                    <li><a href="#">Apple</a></li>
-                                                    <li><a href="#">Hitachi</a></li>
-                                                </ul>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                </ul>
-                                <!-- End Drodown Menu -->
-                            </li>
-                            <li>
-                                <a href="shop_grid.html">Women</a>
-                                <!-- Drodown Menu ------->
-                                <ul class="nav-dropdown js-nav-dropdown">
-                                    <li class="container">
-                                        <ul class="row">
-                                            <!--Grid 1-->
-                                            <li class="nav-dropdown-grid">
-                                                <h6>New In</h6>
-                                                <ul>
-                                                    <li><a href="#">New In Clothing</a></li>
-                                                    <li><a href="#">New In Shoes</a></li>
-                                                    <li><a href="#">New In Bags</a></li>
-                                                    <li><a href="#">New In Watches</a></li>
-                                                    <li><a href="#">Sweaters</a></li>
-                                                    <li><a href="#">Winter Shrugs</a></li>
-                                                </ul>
-                                            </li>
-                                            <!--Grid 2-->
-                                            <li class="nav-dropdown-grid">
-                                                <h6>Clothing</h6>
-                                                <ul>
-                                                    <li><a href="#">Tops , tees & shirts</a></li>
-                                                    <li><a href="#">Dresses & Jumpsuits</a></li>
-                                                    <li><a href="#">Trousers & Jeans</a></li>
-                                                    <li><a href="#">Leggings & Jeggings</a></li>
-                                                    <li><a href="#">Capris,Shorts & Skirts</a></li>
-                                                    <li><a href="#">Winter Jackets</a></li>
-                                                    <li><a href="#">Clothing Accessories</a></li>
-                                                    <li><a href="#">Sweaters</a></li>
-                                                    <li><a href="#">Winter Shrugs</a></li>
-                                                </ul>
-                                            </li>
-                                            <!--Grid 3-->
-                                            <li class="nav-dropdown-grid">
-                                                <h6>Brand</h6>
-                                                <ul>
-                                                    <li><a href="#">A&C Signature</a></li>
-                                                    <li><a href="#">Angry Birds</a></li>
-                                                    <li><a href="#">Macadamia</a></li>
-                                                    <li><a href="#">Miller & Schweizer</a></li>
-                                                    <li><a href="#">Stylet</a></li>
-                                                    <li><a href="#">Van Heusen</a></li>
-                                                    <li><a href="#">Wrangler</a></li>
-                                                    <li><a href="#">Wills Lifestyle</a></li>
-                                                    <li><a href="#">X'Pose</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="nav-dropdown-grid">
-                                                <a href="#" class="sub-banner">
-                                                    <img src="img/banner/banner_115145.jpg" alt="" /></a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                </ul>
-                                <!-- End Drodown Menu -->
-                            </li>
-                            <li>
-                                <a href="shop_grid.html">Kids</a>
-                                <!-- Drodown Menu ------->
-                                <ul class="nav-dropdown js-nav-dropdown">
-                                    <li class="container">
-                                        <ul class="row">
-                                            <!--Grid 1-->
-                                            <li class="nav-dropdown-grid">
-                                                <h6>Kid's</h6>
-                                                <ul>
-                                                    <li><a href="#">Tops & Tunics</a></li>
-                                                    <li><a href="#">Shorts & Capris</a></li>
-                                                    <li><a href="#">Twin Sets</a></li>
-                                                    <li><a href="#">Jeans & Trousers</a></li>
-                                                    <li><a href="#">Leggings & Jeggings</a></li>
-                                                    <li><a href="#">Skirts</a></li>
-                                                    <li><a href="#">Jumpsuits</a></li>
-                                                    <li><a href="#">Casual Dresses</a></li>
-                                                    <li><a href="#">Ethnic Wear</a></li>
-                                                </ul>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                </ul>
-                                <!-- End Drodown Menu -->
-                            </li>
-                            <li>
-                                <a href="shop_grid.html">Brand</a>
+                                <a href="shop_grid.html">Catogory</a>
                                 <!-- Drodown Menu ------->
                                 <ul class="nav-dropdown js-nav-dropdown">
                                     <li class="container">
@@ -559,65 +392,9 @@
                                 <!-- End Drodown Menu -->
                             </li>
                             <li>
-                                <a href="shop_grid.html">Accessories<span class="nav-label-sale"></span></a>
+                                <a href="shop_grid.html">Blog<span class="nav-label-sale"></span></a>
                             </li>
-                            <li>
-                                <a href="#">Pages</a>
-                                <!-- Drodown Menu ------->
-                                <ul class="nav-dropdown js-nav-dropdown">
-                                    <li class="container">
-                                        <ul class="row">
-
-                                            <!--Grid 1-->
-                                            <li class="nav-dropdown-grid">
-                                                <h6>Shop Page</h6>
-                                                <ul>
-                                                    <li><a href="shop_grid.html">Shop Grid - Sidebar Left</a></li>
-                                                    <li><a href="shop_grid-sidebar_right.html">Shop Grid - Sidebar Right</a></li>
-                                                    <li><a href="shop_grid-no_sidebar.html">Shop Grid - No Sidebar</a></li>
-                                                    <li><a href="shop_list.html">Shop List - Sidebar Left</a></li>
-                                                    <li><a href="shop_list-sidebar_right.html">Shop List - Sidebar Right</a></li>
-                                                </ul>
-                                            </li>
-                                            <!--Grid 2-->
-                                            <li class="nav-dropdown-grid">
-                                                <h6>Product Page</h6>
-                                                <ul>
-                                                    <li><a href="product_detail.html">Product Page - Default</a></li>
-                                                    <li><a href="product_detail-with_sidebar.html">Product Page - With Sidebar</a></li>
-                                                    <li><a href="cart.html">Cart Page</a></li>
-                                                    <li><a href="checkout.html">Checkout Page</a></li>
-                                                </ul>
-                                            </li>
-                                            <!--Grid 3-->
-                                            <li class="nav-dropdown-grid">
-                                                <h6>Extra Page</h6>
-                                                <ul>
-                                                    <li><a href="index.html">Home</a></li>
-                                                    <li><a href="about.html">About Us</a></li>
-                                                    <li><a href="contact.html">Contact Us</a></li>
-                                                    <li><a href="portfolio.html">Portfolio</a></li>
-                                                    <li><a href="portfolio-single.html">Portfolio Detail</a></li>
-
-                                                </ul>
-                                            </li>
-
-                                            <!--Grid 1-->
-                                            <li class="nav-dropdown-grid">
-                                                <h6 class="white">Extra Page</h6>
-                                                <ul>
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="blog-with_sidebar.html">Blog - With sidebar</a></li>
-                                                    <li><a href="blog-single.html">Blog Detail</a></li>
-                                                    <li><a href="login-register.html">Login & Register</a></li>
-                                                </ul>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                </ul>
-                                <!-- End Drodown Menu -->
-                            </li>
+                       
                         </ul>
                     </nav>
                     <!-- End Navigation Menu -->

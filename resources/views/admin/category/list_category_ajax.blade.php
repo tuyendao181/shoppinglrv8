@@ -1,5 +1,5 @@
 @foreach($list as $item)
-            <tr class="table-row table-row--chris aa">
+            <tr class="table-row table-row--chris aa fl_{{$item->id}}">
              
             <td class="table-row__td">
                 @if($item->image != null)

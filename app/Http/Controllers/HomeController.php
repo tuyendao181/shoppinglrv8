@@ -20,17 +20,43 @@ class HomeController extends Controller
     public function index(){
 
         $list=ProductAttr::join('products', 'products.id', '=', 'product_attributes.id_product')
-        ->leftJoin('color', 'color.id', '=', 'product_attributes.id_color')
-        ->leftJoin('size', 'size.id', '=', 'product_attributes.id_size')
         ->get();
         $data= $list -> unique('id_product');
+
+        $new=ProductAttr::join('products', 'products.id', '=', 'product_attributes.id_product') 
+        ->orderBy('product_attributes.created_at', 'desc')
+        ->get();
+        $data_new = $new -> unique('id_product');
+
+        $i=0;
+        $arr_new = [];
+        foreach($data_new as $val){
+            if($i < 8){
+                $arr_new[$i] = $val ;
+                $i++;
+            }
+        }
+
+        $sale=ProductAttr::join('products', 'products.id', '=', 'product_attributes.id_product') 
+        ->orderBy('products.price', 'asc')
+        ->get();
+        $sale_price = $sale -> unique('id_product');
+        $arr_price=[];
+        $p=0;
+        foreach($sale_price as $val){
+            if($p < 8){
+                $arr_price[$p] = $val ;
+                $p++;
+            }
+        }
+      
 
         $list_category = Category::where('status',0)->limit(3)->get();
         $slider = Slider::list_Slider();
         $banner = Banner::limit(4)->get();
 
         $blog = Blog::get();
-        return view('page.home',compact('data','list_category','slider','banner','blog'));  
+        return view('page.home',compact('data','list_category','slider','banner','blog','arr_new','arr_price'));  
     }
     public function postregister(Request $request){
         $validator = Validator::make($request->all(), [
@@ -74,6 +100,10 @@ class HomeController extends Controller
         }
 	
 
+    }
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login');
     }
 
 }

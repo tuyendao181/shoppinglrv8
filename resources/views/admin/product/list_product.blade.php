@@ -25,22 +25,19 @@
             </form>
        
           <div class="btn_add_fl" id="btn_add_fl"> <a class="fancybox" href="#inline1"style="    
-                                                                                color: rgb(213 21 16);
-                                                                                text-decoration: none;
-                                                                                background-color: #daf3f8;
-                                                                                font-weight: 700;
-                                                                                padding:10px;
-                                                                                border-radius: 12px;"
+                                                                                   color: rgb(1, 185, 209);
+                                                                                   text-decoration: none;
+                                                                                   background-color: #daf3f8;
+                                                                                   font-weight: 700;
+                                                                                   font-size: 13px;
+                                                                                   padding: 10px;
+                                                                                   border-radius: 12px;"
        >Add Product</a></div>
         </div>
 
 
-        <div id="inline1" style="width:800px;display: none;">
-          <h3 style=" text-align: center;
-                      background-color: #007bff;
-                      border-radius: 5px;
-                      padding: 5px;
-                      color: #ffffff;">
+        <div id="inline1"  style="width:800px;display: none;">
+          <h3 style=" text-align: center;">
            Add Product</h3>
           <div class="mess_add" >
          
@@ -91,12 +88,8 @@
       </div>
 
 
-      <div id="inline2" style="width:800px;display: none;">
-        <h3 style=" text-align: center;
-                    background-color: #007bff;
-                    border-radius: 5px;
-                    padding: 5px;
-                    color: #ffffff;">
+      <div id="inline2"  style="width:800px;display: none;">
+        <h3 style=" text-align: center;">
          Edit Product</h3>
         <div class="mess_add" >
        
@@ -198,7 +191,7 @@
                   <!-- <span class="table-row__small">Basic Policy</span> -->
                 </div>                
               </td>
-              <td data-column="Destination" class="table-row__td">
+              <td data-column="Destination" class="table-row__td" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width:200px">
                 {{$item_list->descriptions}}
               </td>
              
@@ -230,7 +223,7 @@
               
             
               <td class="table-row__td">
-                <a class="fancybox" href="#inline2" id="click_show_edit" data-id="{{$item_list->id}}">
+                <a class="fancybox2" href="#inline2" id="click_show_edit" data-id="{{$item_list->id}}">
                       <svg  version="1.1" class="table-row__edit" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve" data-toggle="tooltip" data-placement="bottom" title="Edit"><g>	<g>		<path d="M496.063,62.299l-46.396-46.4c-21.2-21.199-55.69-21.198-76.888,0l-18.16,18.161l123.284,123.294l18.16-18.161    C517.311,117.944,517.314,83.55,496.063,62.299z" style="fill: rgb(1, 185, 209);"></path>	</g></g><g>	<g>
                     <path d="M22.012,376.747L0.251,494.268c-0.899,4.857,0.649,9.846,4.142,13.339c3.497,3.497,8.487,5.042,13.338,4.143    l117.512-21.763L22.012,376.747z" style="fill: rgb(1, 185, 209);"></path>	</g></g><g>	<g>		<polygon points="333.407,55.274 38.198,350.506 161.482,473.799 456.691,178.568   " style="fill: rgb(1, 185, 209);"></polygon>	</g></g><g></g><g></g><g></g>
                     <g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>

@@ -8,6 +8,8 @@ use  App\Models\Category;
 use  App\Models\Color;
 use  App\Models\Size;
 use  App\Models\Blog;
+use  App\Models\Comment;
+use Auth;
 use App\Helper;
 use  App\Models\ProductAttr;
 use Illuminate\Http\Request;
@@ -24,8 +26,19 @@ class PageController extends Controller
         $size = $list->unique('id_size');
         // $pro =Product::find($id);
         $pro=Product::where('id','=',$id)->get();
-        // dd( $product );
-        return view('page.product_detail',compact('list','color','size','pro'));  
+
+        $comment = Comment::leftjoin('account','account.id','=','comment.customer_id')
+        ->where('comment.product_id','=',$id)
+        ->get();
+
+ 
+
+        $lq=ProductAttr::join('products', 'products.id', '=', 'product_attributes.id_product')
+        ->where('products.category_id','=',$pro[0]['category_id'])
+        ->get();
+        $data= $lq -> unique('id_product');
+
+        return view('page.product_detail',compact('list','color','size','pro','comment','data'));  
     }
     public function check_product(Request $request){
         $list=ProductAttr::where('id_product', '=', $request->id_product)
@@ -51,18 +64,13 @@ class PageController extends Controller
         ->leftJoin('size', 'size.id', '=', 'product_attributes.id_size')
         ->where('category.id', '=', $id)
         ->get();
-       
-        //     $test=ProductAttr::
-        //     leftJoin('products', 'products.id', '=', 'product_attributes.id_product')
-        //    ->leftJoin('category', 'category.id', '=', 'products.category_id')
-        //    ->where('category.id', '=', $id)
-        //    ->get();
 
+        $category = Category::where('id','=',$id)->get();
         $pro = $list->unique('id_product');
         $arr = [];
         $count = count($pro);
         $i=0;
-        $pagi= $p->pagi(5,1,$count);
+        $pagi= $p->pagi(8,1,$count);
         foreach ($pro as $key => $value){
             $arr[$i] = $value;
             $i++;
@@ -80,7 +88,7 @@ class PageController extends Controller
         $color = $list->unique('id_color');
         $size = $list->unique('id_size');
      
-        return view('page.category',compact('arr_temp','color','size','id','total'));
+        return view('page.category',compact('arr_temp','color','size','id','total','category'));
     }
     public function category_filter(Request $request){
         $size= $request->size ?? '' ;
@@ -146,7 +154,7 @@ class PageController extends Controller
         $arr = [];
         $count = count($pro);
         $i=0;
-        $pagi= $p->pagi(5,$curent,$count);
+        $pagi= $p->pagi(8,$curent,$count);
         foreach ($pro as $key => $value){
             $arr[$i] = $value;
             $i++;
@@ -170,5 +178,30 @@ class PageController extends Controller
         $data =  Blog::Find_Blog($id);
         $result =  Blog::limit(6)->get();
         return view('page.blog_detail',compact('data','result'));
+    }
+
+    public function comment_product(Request $request){
+        $validator = Validator::make($request->all(), [
+            'content' => 'required',
+       ]);
+       if ($validator->fails()) {
+             return response()->json(["err" => $validator -> errors()->toArray(),'status'=>0 ]);
+       }
+       else{
+            Comment::create([
+                'content'=> $request->content,
+                'product_id'=> $request->id,
+                'customer_id'=> Auth::user()->id
+            ]);
+            $comment = Comment::leftjoin('account','account.id','=','comment.customer_id')
+            ->where('comment.product_id','=',$request->id)
+            ->get();
+            return response()->json(["data"=>$comment,'status'=>200 ]);
+
+       }
+  
+           
+           
+           
     }
 }

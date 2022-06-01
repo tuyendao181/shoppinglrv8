@@ -12,7 +12,7 @@
                             <nav class="breadcrumb-link">
                                 <a href="#">Home</a>
                                 <a href="#">Categories</a>
-                                <span>Men Polos & Tees</span>
+                                <span>{{$category[0]['name']}}</span>
                             </nav>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                         <div class="col-12">
                             <!-- Title -->
                             <div class="list-page-title">
-                                <h2 class="">Men Polos & Tees <small>120 Products</small></h2>
+                                <h2 class="">{{$category[0]['name']}}</h2>
                             </div>
                             <!-- End Title -->
 
@@ -54,7 +54,7 @@
                                         
                                     </script>
                                     <!--Product Show-->
-                                    <form class="product-show">
+                                    <!-- <form class="product-show">
                                         <label for="product-show">Show</label>
                                         <select name="product-show" id="product-show" class="nice-select-box">
                                             <option value="8" selected="selected">8</option>
@@ -62,7 +62,7 @@
                                             <option value="24">24</option>
                                             <option value="32">32</option>
                                         </select>
-                                    </form>
+                                    </form> -->
 
 
 
@@ -178,16 +178,16 @@
                                             <div class="product-img-wrap">
                                                 <img src="{{url('/uploads/')}}/{{ $item->image}}" alt="">
                                             </div>
-                                            <div class="product-button">
+                                            <!-- <div class="product-button">
                                                 <a href="#" class="js_tooltip" data-mode="top" data-tip="Add To Cart"><i class="fa fa-shopping-bag"></i></a>
                                                 <a href="#" class="js_tooltip" data-mode="top" data-tip="Add To Whishlist"><i class="fa fa-heart"></i></a>
                                                 <a href="#" class="js_tooltip" data-mode="top" data-tip="Quick&nbsp;View"><i class="fa fa-eye"></i></a>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="product-detail">
                                             <a class="tag" href="#">{{$item->name}}</a>
                                       
-                                            <p class="product-title"><a href="">{{$item->name}}</a></p>
+                                            <p class="product-title"><a href="{{route('show_product_detail',[$item->id_product])}}">{{$item->name}}</a></p>
                                             <div class="product-rating">
                                                 <div class="star-rating" itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" title="Rated 4 out of 5">
                                                     <span style="width: 60%"></span>
