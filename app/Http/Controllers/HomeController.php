@@ -54,7 +54,6 @@ class HomeController extends Controller
         $list_category = Category::where('status',0)->limit(3)->get();
         $slider = Slider::list_Slider();
         $banner = Banner::limit(4)->get();
-
         $blog = Blog::get();
         return view('page.home',compact('data','list_category','slider','banner','blog','arr_new','arr_price'));  
     }
@@ -93,7 +92,7 @@ class HomeController extends Controller
 		$remember= request('remember') ? true : false;
 		$check=Auth::attempt($data);
 		if($check){
-			return redirect()->route('home');
+            return redirect()->route('home');
 		}
         else{
             return redirect()->back()->with('error','Error!! Account login password failed.');
@@ -104,6 +103,26 @@ class HomeController extends Controller
     public function logout(){
         Auth::logout();
         return redirect()->route('login');
+    }
+    //adim
+
+    public function loginAdmin(){
+        return view('formlogin_admin');
+    }
+    public function postAdmin(){
+        $data=['email'=> request('email'),'password'=> request('password')];
+		$remember= request('remember') ? true : false;
+		$check=Auth::attempt($data);
+		if($check){
+            return redirect()->route('dashboard');
+		}
+        else{
+            return redirect()->back()->with('error','Error!! Account login password failed.');
+        }
+    }
+    public function logoutAdmin(){
+        Auth::logout();
+        return redirect()->route('loginAdmin');
     }
 
 }

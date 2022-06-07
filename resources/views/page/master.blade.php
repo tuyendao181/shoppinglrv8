@@ -212,7 +212,7 @@
                     <!-- Cart Buttons -->
                     <div class="cart-action-buttons">
                         <a href="{{route('getCart')}}" class="view-cart btn btn-md btn-gray">View Cart</a>
-                        <a href="checkout.html" class="checkout btn btn-md btn-color">Checkout</a>
+                        <a href="{{route('getCheckout')}}" class="checkout btn btn-md btn-color">Checkout</a>
                     </div>
                     <!-- End Cart Buttons -->
 
@@ -275,15 +275,19 @@
                                 <div class="dropdown-menu">
                                     <ul>
                                         <!-- <li><a href="login-register.html">My Account</a></li> -->
-                                        <li><a href="#">Order History</a></li>
+                                        <li><a href="{{route('history_detail')}}">Order History</a></li>
                                         <!-- <li><a href="#">Returns</a></li>
                                         <li><a href="#">My Wishlist</a></li> -->
-                                        <li><a href="checkout.html">Checkout</a></li>
+                                        <li><a href="{{route('getCheckout')}}">Checkout</a></li>
                                     </ul>
                                     <span class="divider"></span>
                                     <ul>
-                                        <li><a href="{{route('login')}}"><i class="fa fa-lock left" aria-hidden="true"></i>Login</a></li>
+                                        
+                                        @if(Auth::check())
                                         <li><a href="{{route('logout')}}"><i class="fa fa-lock left" aria-hidden="true"></i>Logout</a></li>
+                                        @else
+                                        <li><a href="{{route('login')}}"><i class="fa fa-lock left" aria-hidden="true"></i>Login</a></li>
+                                        @endif
                                         <li><a href="{{route('register')}}"><i class="fa fa-user left" aria-hidden="true"></i>Create an Account</a></li>
                                     </ul>
                                 </div>
@@ -312,17 +316,17 @@
                     <!-- Right Sidebar Nav -->
                     <div class="header-rightside-nav">
                         <!-- Login-Register Link -->
-                        <div class="header-btn-link hidden-lg-down"><a href="#" class="btn btn-sm btn-color">Buy Now</a></div>
+                        <!-- <div class="header-btn-link hidden-lg-down"><a href="#" class="btn btn-sm btn-color">Buy Now</a></div> -->
                         <!-- End Login-Register Link -->
 
                         <!-- Sidebar Icon -->
                         <div class="sidebar-icon-nav">
                             <ul class="list-none-ib">
                                 <!-- Search-->
-                                <li><a id="search-overlay-menu-btn"><i aria-hidden="true" class="fa fa-search"></i></a></li>
+                                <!-- <li><a id="search-overlay-menu-btn"><i aria-hidden="true" class="fa fa-search"></i></a></li> -->
 
                                 <!-- Whishlist-->
-                                <li><a class="js_whishlist-btn"><i aria-hidden="true" class="fa fa-heart"></i><span class="countTip">10</span></a></li>
+                                <!-- <li><a class="js_whishlist-btn"><i aria-hidden="true" class="fa fa-heart"></i><span class="countTip">10</span></a></li> -->
 
                                 <!-- Cart-->
                                 <li><a id="sidebar_toggle_btn">
@@ -347,10 +351,10 @@
                     <nav class="navigation-menu">
                         <ul>
                             <li>
-                                <a href="index.html">Home</a>
+                                <a href="{{route('home')}}">Home</a>
                             </li>
                             <li>
-                                <a href="shop_grid.html">Catogory</a>
+                                <a href="#">Catogory</a>
                                 <!-- Drodown Menu ------->
                                 <ul class="nav-dropdown js-nav-dropdown">
                                     <li class="container">
@@ -358,19 +362,13 @@
                                             <!--Grid 1-->
                                             <li class="nav-dropdown-grid">
                                                 <ul>
-                                                    <li><a href="#">A&C Signature</a></li>
-                                                    <li><a href="#">Angry Birds</a></li>
-                                                    <li><a href="#">Macadamia</a></li>
-                                                    <li><a href="#">Miller & Schweizer</a></li>
-                                                    <li><a href="#">Stylet</a></li>
-                                                    <li><a href="#">Van Heusen</a></li>
-                                                    <li><a href="#">Wrangler</a></li>
-                                                    <li><a href="#">Wills Lifestyle</a></li>
-                                                    <li><a href="#">X'Pose</a></li>
+                                                    @foreach($category as $item)
+                                                    <li><a href="{{route('category_detail',[$item->id])}}">{{$item->name}}</a></li>
+                                                    @endforeach
                                                 </ul>
                                             </li>
                                             <!--Grid 2-->
-                                            <li class="nav-dropdown-grid">
+                                            <!-- <li class="nav-dropdown-grid">
                                                 <ul>
                                                     <li><a href="#">Apple</a></li>
                                                     <li><a href="#">United State</a></li>
@@ -384,7 +382,7 @@
                                                     <li><a href="#">Instagram</a></li>
 
                                                 </ul>
-                                            </li>
+                                            </li> -->
 
                                         </ul>
                                     </li>
@@ -392,8 +390,9 @@
                                 <!-- End Drodown Menu -->
                             </li>
                             <li>
-                                <a href="shop_grid.html">Blog<span class="nav-label-sale"></span></a>
+                                <a href="{{route('blog')}}">Blog</a>
                             </li>
+                            <!-- <span class="nav-label-sale"></span> -->
                        
                         </ul>
                     </nav>
@@ -487,23 +486,23 @@
 
             <!-- Footer Newsletter -->
             <div class="container">
-                <div class="footer-newsletter">
+                <!-- <div class="footer-newsletter">
                     <h4>Subscribe Newsletter</h4>
                     <form class="footer-newslettr-inner">
                         <input class="input-md fancy" name="footeremail" title="Enter Email Address.." placeholder="Enter Email Address.." type="text">
                         <button class="btn btn-md btn-color fancy">Sing Up</button>
                     </form>
-                </div>
+                </div> -->
             </div>
             <!-- End Footer Newsletter -->
 
             <!-- Footer Copyright -->
-            <div class="container">
+            <div class="container" style="margin-top:20px">
                 <div class="copyrights">
-                    <p class="copyright">&copy; Created by <a href="http://nileforest.com/" target="_blank">NileForest</a>. Philos Responsive Woocommerce Theme 2017</p>
-                    <p class="payment">
+                    <p class="copyright">&copy; Created by <a href="#" target="_blank">Đ.N.T</a>.tuyendao181@gmail.com</p>
+                    <!-- <p class="payment">
                         <img src="img/payment_logos.png" alt="payment">
-                    </p>
+                    </p> -->
                 </div>
             </div>
             <!-- End Footer Copyright -->
@@ -543,7 +542,7 @@
     <!-- Plugins All js -->
     <script type="text/javascript" src="{{url('public/backend/js')}}/custom.js"></script>
     <script type="text/javascript" src="{{url('public/backend/js')}}/custom_wap.js"></script>
-    @yield('asset_footer');
+    @yield('asset_footer')
     <!-- custom js -->
     <!-- end jquery -->
 

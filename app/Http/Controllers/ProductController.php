@@ -95,7 +95,7 @@ class ProductController extends Controller
              <!-- <span class="table-row__small">Basic Policy</span> -->
            </div>                
          </td>
-         <td data-column="Destination" class="table-row__td">
+         <td data-column="Destination" class="table-row__td" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width:200px">
            '.$item_list->descriptions.'
          </td>
         

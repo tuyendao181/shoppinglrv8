@@ -17,12 +17,13 @@
           </form>
      
         <div class="btn_add_fl"> <a class="fancybox" href="#inline1"style="    
-                                                                              color: rgb(213 21 16);
-                                                                              text-decoration: none;
-                                                                              background-color: #daf3f8;
-                                                                              font-weight: 700;
-                                                                              padding:10px;
-                                                                              border-radius: 12px;"
+                                                                              color: rgb(1, 185, 209);
+                                                                                   text-decoration: none;
+                                                                                   background-color: #daf3f8;
+                                                                                   font-weight: 700;
+                                                                                   font-size: 13px;
+                                                                                   padding: 10px;
+                                                                                   border-radius: 12px;"
      >Add Blog</a></div>
       </div>
      

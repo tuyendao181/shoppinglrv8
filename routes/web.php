@@ -14,10 +14,10 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('page.category');
+// Route::get('/', function () {
+//     return view('page.category');
 
-});
+// });
 
 // Route::get('/index', [Home_Controller::class, 'index']);
 
@@ -28,10 +28,15 @@ Route::post('/register','App\Http\Controllers\HomeController@postregister')->nam
 
 Route::get('/logout','App\Http\Controllers\HomeController@logout')->name('logout');
 
+Route::get('/login-admin','App\Http\Controllers\HomeController@loginAdmin')->name('loginAdmin');
+Route::post('/login-admin','App\Http\Controllers\HomeController@postAdmin')->name('postAdmin');
+Route::get('/logout-admin','App\Http\Controllers\HomeController@logoutAdmin')->name('logoutAdmin');
+
 
 // Route::get('/','App\Http\Controllers\HomeController@index')->name('home');
 
 Route::get('/home','App\Http\Controllers\HomeController@index')->name('home');
+Route::get('/','App\Http\Controllers\HomeController@index')->name('home');
 
 Route::get('/show-product-detail/{id}','App\Http\Controllers\PageController@show_product_detail')->name('show_product_detail');
 Route::get('/comment-product','App\Http\Controllers\PageController@comment_product')->name('comment_product');
@@ -42,6 +47,23 @@ Route::get('/category-filter','App\Http\Controllers\PageController@category_filt
 Route::get('/category-paginate','App\Http\Controllers\PageController@category_paginate')->name('category_paginate');
 
 Route::get('/blog-detail/{id}','App\Http\Controllers\PageController@blog_detail')->name('blog_detail');
+Route::get('/blog','App\Http\Controllers\PageController@blog')->name('blog');
+
+Route::get('/history-detail','App\Http\Controllers\PageController@history_detail')->name('history_detail');
+
+Route::prefix('cart')->group(function (){
+    Route::get('/get-cart','App\Http\Controllers\CartController@getCart')->name('getCart');
+    Route::get('/post-cart','App\Http\Controllers\CartController@postCart')->name('postCart');
+    Route::get('/put-cart','App\Http\Controllers\CartController@putCart')->name('putCart');
+    Route::get('/delete-Cart','App\Http\Controllers\CartController@deleteCart')->name('deleteCart');
+});
+
+Route::middleware('auth')->prefix('checkout')->group(function(){
+    Route::get('/get-checkout','App\Http\Controllers\CheckoutController@getCheckout')->name('getCheckout');
+    Route::get('/post-checkout','App\Http\Controllers\CheckoutController@postCheckout')->name('postCheckout');
+    Route::get('/getOrderdetail','App\Http\Controllers\CheckoutController@getOrderdetail')->name('getOrderdetail');
+
+});
 
 
 //paypal
@@ -55,9 +77,13 @@ Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])
 //     Route::get('/dashboard','App\Http\Controllers\AdminController@index')->name('dashboard');
 // });
 
-Route::prefix('admin')->group(function () {
+Route::middleware('role:1,2')->prefix('admin')->group(function () {
 
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+
+    Route::get('/order-detail', [AdminController::class, 'orderDetail'])->name('orderDetail');
+
+
     // Route::get('/dashboard','App\Http\Controllers\AdminController@index')->name('dashboard');
     Route::prefix('account')->group(function (){
         Route::get('/list-account','App\Http\Controllers\AccountController@list_account')->name('list_account');
@@ -149,19 +175,4 @@ Route::prefix('admin')->group(function () {
         Route::get('/delete-attr','App\Http\Controllers\ProductAttrController@delete_attr')->name('delete_attr');
     });
 
-
-    Route::prefix('cart')->group(function (){
-        Route::get('/get-cart','App\Http\Controllers\CartController@getCart')->name('getCart');
-        Route::get('/post-cart','App\Http\Controllers\CartController@postCart')->name('postCart');
-        Route::get('/put-cart','App\Http\Controllers\CartController@putCart')->name('putCart');
-        Route::get('/delete-Cart','App\Http\Controllers\CartController@deleteCart')->name('deleteCart');
-    });
-
-    Route::middleware('auth')->prefix('checkout')->group(function(){
-        Route::get('/get-checkout','App\Http\Controllers\CheckoutController@getCheckout')->name('getCheckout');
-        Route::get('/post-checkout','App\Http\Controllers\CheckoutController@postCheckout')->name('postCheckout');
-        Route::get('/getOrderdetail','App\Http\Controllers\CheckoutController@getOrderdetail')->name('getOrderdetail');
-
-    });
-   
 });

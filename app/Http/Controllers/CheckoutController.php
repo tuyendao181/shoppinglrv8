@@ -51,7 +51,6 @@ class CheckoutController extends Controller
 					$qty = $item['quantity'];
 					$color = $item['color'];
 					$size = $item['size'];
-
 					$orderdetail=OrderDetail::create([
 						'order_id' => $order_id,
 						'quantity' => $qty,

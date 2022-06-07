@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 use App\Models\Cart;
+use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,10 +26,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
         view()->composer("*",function($view){
             // $homecats=Category::orderBy('name', 'ASC')->get();
             $cart=new Cart();
-            $view->with(compact('cart'));
+            $category = Category::all();
+            $view->with(compact('cart','category'));
         });
     }
 }

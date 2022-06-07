@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Validator;
+use  Validator;
 use  App\Models\Product;
 use  App\Helper\Pagination;
 use  App\Models\Category;
@@ -9,11 +9,13 @@ use  App\Models\Color;
 use  App\Models\Size;
 use  App\Models\Blog;
 use  App\Models\Comment;
-use Auth;
-use App\Helper;
+use  App\Models\Orders;
+use  App\Models\OrderDetail;
+use  Auth;
+use  App\Helper;
 use  App\Models\ProductAttr;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use  Illuminate\Http\Request;
+use  Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
@@ -26,12 +28,9 @@ class PageController extends Controller
         $size = $list->unique('id_size');
         // $pro =Product::find($id);
         $pro=Product::where('id','=',$id)->get();
-
         $comment = Comment::leftjoin('account','account.id','=','comment.customer_id')
         ->where('comment.product_id','=',$id)
         ->get();
-
- 
 
         $lq=ProductAttr::join('products', 'products.id', '=', 'product_attributes.id_product')
         ->where('products.category_id','=',$pro[0]['category_id'])
@@ -203,5 +202,26 @@ class PageController extends Controller
            
            
            
+    }
+    public function history_detail(Request $request){
+        if(Auth::check()){
+            $idc = Auth::User()->id;
+            $pro=Orders::
+              select('products.name','orders_detail.color','orders_detail.size','orders_detail.price','orders_detail.quantity','orders_detail.created_at')
+            ->leftJoin('orders_detail', 'orders.id', '=', 'orders_detail.order_id')
+            ->leftJoin('product_attributes','product_attributes.id_atrr','=','orders_detail.product_id')
+            ->leftJoin('account','account.id','=','orders.customer_id')
+            ->leftJoin('products','products.id','=','product_attributes.id_product')
+            ->where('orders.customer_id','=',$idc)
+            ->orderBy('orders_detail.created_at','desc')
+            ->get();
+        }else{
+            $pro='';
+        }
+        return view('page.history',compact('pro'));
+    }
+    public function blog(Request $request){
+        $blog = Blog::all();
+       return view('page.blog',compact('blog'));
     }
 }

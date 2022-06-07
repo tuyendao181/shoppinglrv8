@@ -10,7 +10,7 @@
                         <div class="col-12">
                             <nav class="breadcrumb-link">
                                 <a href="#">Home</a>
-                                <span>Blog Detail</span>
+                                <span>{{$data[0]['content']}}</span>
                             </nav>
                         </div>
                     </div>

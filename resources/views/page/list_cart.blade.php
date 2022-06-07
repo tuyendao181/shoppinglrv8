@@ -79,13 +79,13 @@
                          </div>
                          <div class="row cart-actions">
                              <div class="col-md-6">
-                                 <div class="coupon">
+                                 <!-- <div class="coupon">
                                      <input class="input-md" id="coupon_code" name="coupon_code" title="Coupon Code" value="" placeholder="Enter Coupon Code" type="text">
                                      <input class="btn btn-md btn-black" name="coupon_code" value="Apply Coupon" type="submit" />
-                                 </div>
+                                 </div> -->
                              </div>
                              <div class="col-md-6 text-right">
-                                 <input class="btn btn-md btn-gray" name="update_cart" value="Update cart" disabled="" type="submit">
+                                 <!-- <input class="btn btn-md btn-gray" name="update_cart" value="Update cart" disabled="" type="submit"> -->
                              </div>
                          </div>
                      </form>
